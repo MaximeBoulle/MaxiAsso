@@ -14,8 +14,8 @@ import { computed, ref } from "vue";
 
       <nav> 
         <RouterLink to="/">HomePage</RouterLink>
-        <RouterLink to="/books/add">AddBookPages</RouterLink>
-        <RouterLink to="/test">Test</RouterLink>
+        <RouterLink to="/event/add">AddBookPages</RouterLink>
+        
       </nav>
 
     </div>

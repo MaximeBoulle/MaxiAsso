@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../pages/HomePage.vue'
-import Test from '../pages/Test.vue'
-import AddBookPages from '../pages/AddBookPages.vue'
+
+import AddEventPage from '../pages/AddEventPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,37 +13,11 @@ const router = createRouter({
     },
 
     {
-      path: '/test',
-      name: 'test',
-      component: Test
+      path:'/event/add',
+      name:'AddEventPage',
+      component: AddEventPage
     },
 
-    {
-      path:'/books/add',
-      name:'AddBookPages',
-      component: AddBookPages
-    },
-
-    /*{
-      path:'/account/log_in',
-      name: 'account_log',
-      component : LoginPage
-    },
-    {
-      path:'/account/sign_up',
-      name: 'account_signup',
-      component : SignUpPage
-    },
-    {
-      path:'/room/:id',
-      name:'room_information',
-      component: RoomPage
-    },
-    {
-      path:'/my_reservation',
-      name: 'my_reservation',
-      component: MyReservationPage
-    }*/
   ]
 })
 
