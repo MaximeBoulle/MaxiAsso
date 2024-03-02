@@ -31,7 +31,12 @@ const {img} = defineProps({
       <img :src="event_create.image" alt="image couldn't load">
   
     </section>
+
     <section class="form_name">
+      <button class="bloc-top">
+            <span>Modifier</span>
+            <img src="../assets/">
+        </button>
         <form methode="post" action="#" id="Name_event_description_form" @submit.prevent>
                 <fieldset class="Name_event_description">
                     <input v-model="event_create.title" placeholder="Ajouter un titre">
