@@ -21,6 +21,19 @@ let loaded = 0
 const {img} = defineProps({
   user: Object
 });
+
+//Fonction pour montrer le sous-menu
+function show_form()
+{
+  let dropdown = document.getElementById("Name_event_description_form");
+  let hide_title = document.getElementById("Title_form_name");
+  console.log(hide_title.display)
+  
+  //condition pour tester si le menu est déjà montrer ou non si "flex" alors on met none (pour le faire disparaitre) sinon on met flex
+  dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
+  hide_title.display = (hide_title.display ==="block") ? "none" : "block";
+
+}
 </script>
 
 <template>
@@ -28,14 +41,14 @@ const {img} = defineProps({
   <main>
 
     <section class="image">
-      <img :src="event_create.image" alt="image couldn't load">
+      <img :src="event_create.image" alt="image couldn't load" class="image_event" >
   
     </section>
 
     <section class="form_name">
-      <button class="bloc-top">
-            <span>Modifier</span>
-            <img src="../assets/">
+        <button @click= "show_form" class="bloc-top">
+            <span id="Title_form_name">Nom de l'événement</span>
+            <img class="bouton_add" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png">
         </button>
         <form methode="post" action="#" id="Name_event_description_form" @submit.prevent>
                 <fieldset class="Name_event_description">
@@ -97,7 +110,7 @@ main
   margin-top:2%
 }
 
-img
+.image_event
 {
   transition: width 2s;
   height: 90%;
@@ -120,7 +133,7 @@ img
 
 #Name_event_description_form
 {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -167,4 +180,28 @@ input::placeholder
   font-size: 120%;
 }
 
+.bloc-top {
+    padding: 2%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 118%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:  #868585;
+    color: #f1f1f1;
+    cursor: pointer;
+    border-radius:  5px;
+}
+
+
+.bloc-top img {
+    width: 14%
+}
+
+#Title_form_name
+{
+  display: block;
+}
 </style>
