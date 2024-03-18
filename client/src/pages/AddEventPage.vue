@@ -32,8 +32,13 @@ function show_form()
   //condition pour tester si le menu est déjà montrer ou non si "flex" alors on met none (pour le faire disparaitre) sinon on met flex
   dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
   hide_title.display = (hide_title.display ==="block") ? "none" : "block";
+ 
 
 }
+
+let fieldset_form = ref([
+    {id_event:id_event.value++, title:"", type:""}
+])
 </script>
 
 <template>
@@ -58,22 +63,72 @@ function show_form()
         </form>
       </section>
 
+    
+
     <section class="propierties_event">
-      <form>
+      <section class="Name_event">
+        <form methode="post" action="#" id="Name_fiedlset" @submit.prevent>
+          
+          <input  v-model="event_create.title" placeholder="Ajouter un titre">
+
+
+        </form>
+      </section>
+      
+      <form class="event_form">
+
         <fieldset id="box1">
-          <input type="checkbox" id="Texte" >
-          <label for="Texte">Texte</label>
-          <input type="checkbox" id="Obligatoire" >
-          <label for="Obligatoire">Obligatoire</label>
-          <input type="checkbox" id="Paragraphe" >
-          <label for="Paragraphe">Paragraphe</label>
-          <input type="checkbox" id="Choix unique" >
-          <label for="Choix unique">Choix unique</label>
-          <input type="checkbox" id="Date" >
-          <label for="Date">Date</label>
-          <input type="checkbox" id="Heure" >
-          <label for="Heure">Heure</label>
+
+          <section class="checbox_colonne">
+              
+            <section>
+              <input type="checkbox" id="Texte" >
+              <label for="Texte">Texte</label>
+              
+            </section>
+
+            <section>
+              <input type="checkbox" id="Choix unique" >
+              <label for="Choix unique">Choix unique</label>
+            </section>
+              
+            <section>
+              <input type="checkbox" id="Choix multiple" >
+              <label for="Choix unique">Choix multiple</label>
+              
+            </section>
+                            
+          </section>
+          
+          <section class="checbox_colonne">
+
+            <section>
+              <input type="checkbox" id="Paragraphe" >
+              <label for="Paragraphe">Paragraphe</label>
+            </section>
+            
+            <section>
+              <input type="checkbox" id="Date" >
+              <label for="Date">Date</label>
+            </section>
+            
+            <section>
+              <input type="checkbox" id="Heure" >
+              <label for="Heure">Heure</label>
+            </section>
+              
+            
+          </section>
+          
+          <section class="checbox_colonne">
+            <input type="checkbox" id="Obligatoire" >
+            <label for="Obligatoire">Obligatoire</label>
+          </section>
+
+          
+          
         </fieldset>
+
       </form>
     </section>
 
@@ -86,14 +141,17 @@ function show_form()
 
 main
 {
+  padding: 5%;
+  margin: 10% 5% 0% 5%;
   margin-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 3%;
   border-radius: 41px;
-  background: #fbf6f6f6;
+  background-color: rgb(217, 217, 217,0.26);
+  font-family: 'inter', sans-serif;
+
 }
 
 .image
@@ -106,7 +164,7 @@ main
   height: 90%;
   width:100%;
   border-radius: 50px;
-  background: #efeaea;
+  background: rgb(217, 217, 217,1);
   margin-top:2%
 }
 
@@ -204,4 +262,78 @@ input::placeholder
 {
   display: block;
 }
+
+#Name_fiedlset
+{
+  width: 50%;
+  color: black;
+}
+
+#Name_fiedlset input
+{
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+#Name_fiedlset ::placeholder
+{
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  height : 5vh
+}
+
+.propierties_event
+{
+  width: 100%;
+}
+
+.event_form
+{
+  font-size: 0.84rem;;
+  height: 100%;
+}
+
+
+.event_form fieldset
+{
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0.1%;
+  margin: 0;
+  width: 100%;
+  background-color: rgb(255, 255, 255,1);
+  padding-top: 10%;
+}
+
+.checbox_colonne
+{
+  flex: 1;
+  max-width: 50%;
+  margin-right: 2.5%;
+  margin-left: 2.5%
+}
+
+
+.checbox_colonne input
+{
+  width: 10%;
+  margin-right: 2%;
+}
+
+.checbox_colonne section
+{
+  display: inline-flex;
+  width: 279%;
+  align-items: center;
+}
+
+.checbox_colonne label
+{
+  width: 300%;
+}
+
 </style>
