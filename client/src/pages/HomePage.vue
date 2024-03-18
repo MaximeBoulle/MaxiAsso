@@ -1,20 +1,7 @@
 <script setup>
 
-import { ref } from 'vue';
 
-  const heureInput = document.getElementById('heure');
-  heureInput.addEventListener('click', () => {
-    const heureArrivee = heureInput.value.split(':');
-    const heure = parseInt(heureArrivee[0]);
-    const minutes = parseInt(heureArrivee[1]);
-
-    if (minutes % 15 !== 0) {
-      const prochaineMinuteMultiple = Math.ceil(minutes / 15) * 15;
-      heureInput.value = `${heure.toString().padStart(2, '0')}:${prochaineMinuteMultiple.toString().padStart(2, '0')}`;
-    }
-  });
 </script>
-
 
 <template>
 
@@ -33,7 +20,7 @@ import { ref } from 'vue';
         <label class="boxename" for="email">MAIL</label>
         <input type="email" id="email" name="email" required>
         <label class="boxename" for="heure">HEURE D'ARRIVEE</label>
-        <input type="time" id="heure" name="heure" required>
+        <input type="time" id="heure" name="heure" required step="900">
         <button type="submit">S'inscrire</button>
       </form>
     </section>
@@ -111,5 +98,21 @@ display: flex;
 
 
   }
-</style>
 
+  @media (min-width: 768px) {
+    main {
+      padding: 10px;
+    
+    }
+
+    .supershy-image {
+      max-width: 100%;
+    }
+
+    input {
+      width: calc(100% - 20px);
+    }
+  }
+
+
+  </style>
