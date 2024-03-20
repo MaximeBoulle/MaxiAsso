@@ -1,25 +1,14 @@
 <script >
-import { RouterLink, RouterView } from 'vue-router'
-import { computed, ref } from "vue";
-
-
-
+  import { RouterLink, RouterView } from 'vue-router'
+  import { computed, ref } from "vue";
 </script>
 
 <template>
   <header>
+    <nav> 
+      
+    </nav>      
     
-
-    <div class="wrapper">
-
-      <nav> 
-        <RouterLink to="/">HomePage</RouterLink>
-        <RouterLink to="/books/add">AddBookPages</RouterLink>
-        <RouterLink to="/test">Test</RouterLink>
-      </nav>
-
-    </div>
-
   </header>
 
   <RouterView />
@@ -27,5 +16,5 @@ import { computed, ref } from "vue";
 </template>
 
 <style scoped>
-
+  
 </style>
