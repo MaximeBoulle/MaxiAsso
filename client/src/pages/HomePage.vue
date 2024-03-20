@@ -11,10 +11,13 @@
 
     menu_btn.addEventListener('click', function(){
       menu_btn.classList.toggle('is-active');
+      
       mobile_menu.classList.toggle('is-active');
       }
     )
   }
+
+ 
 
 
 </script>
@@ -28,50 +31,45 @@
       <div class="logo">
         <span class="orange">Maxi</span><span class="violet">Asso</span>
       </div>
+      <div class="nav-full-size">
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/books/add">About us</RouterLink>
+        <RouterLink to="/test">Contact</RouterLink>
+      </div>
+      <div class="profile-asso" id="profile-asso-header">
+        <div id="nom-asso">Connexion</div>
+        <img id="profil-logo" src="../assets/2815428.png" alt="profil-logo">
+      </div>
     </div>
   </header>
   <nav class="mobile-nav">
     <div class="profile-asso">
-      <div id="nom-asso">Efrei Chef</div>
+      <div id="nom-asso">Connexion</div>
       <img id="profil-logo" src="../assets/2815428.png" alt="profil-logo">
     </div>
-    <RouterLink to="/">HomePage</RouterLink>
-    <RouterLink to="/books/add">AddBookPages</RouterLink>
-    <RouterLink to="/test">Test</RouterLink>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/books/add">About us</RouterLink>
+      <RouterLink to="/test">Contact</RouterLink>
   </nav>
   <div class="unused-background"></div>
 
 </template>
 
 <style scoped>
-  *{
-    margin : 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Actor, Helvetica, sans-serif;
-  }
+*{
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Actor, Helvetica, sans-serif;
+}
 
-  header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 223, 223, 0.61);
-
-
-    .container{
-      padding-top: 4rem;
-      padding-bottom: 32px;
-      display: flex;
-      flex-direction: row;
-      text-align: center;
-      justify-content: center;
-      max-width: 1600px;
-      margin: 0 auto;
-      padding-left: 12px;
-      padding-right: 12px;
-    }
-  }
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 223, 223, 0.61);
+}
 
 
 
@@ -211,6 +209,9 @@
     right: 0;
   }
 
+   
+
+
 
   @media (min-width: 768px){
     .mobile-nav{
@@ -220,6 +221,97 @@
       display: none;
     }
 
+    .container{
+      padding: 3rem 6rem 2rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+
+    .profile-asso{
+        display: flex;
+        justify-content:right;
+        width: fit-content;
+        height: fit-content;
+        max-width: 22rem;
+        background-color: white;
+        padding:  0.5rem;
+
+        border-radius: 10px;
+        color: rgba(0, 0, 0, 0.602);
+        font-size: 1.4rem;
+        font-style: none;
+        text-decoration: none;
+        margin-top: -0.5rem;
+      }
+
+      .profile-asso:hover{
+        background-color: rgb(249, 205, 205);
+        transition: 0.4s;
+      }
+
+      #profil-logo{
+        width: 3rem;
+        height: 3rem;
+        margin-left: 1rem;
+      }
+
+      #nom-asso{
+        padding-top: 0.8rem;
+        margin-left: 1rem;
+      }
+
+      .nav-full-size{
+        display: flex;
+        justify-content: space-between;
+        max-width: 30rem;
+        width: 100%;
+        margin: auto;
+
+        font-size: 1.2rem;
+
+        a{
+          color: #EDA10C;
+          text-decoration: none;
+          font-style: none;
+          margin-right: 5%;
+          margin-left: 5%;
+          padding: 0.2rem;
+
+        }
+
+      a:hover{
+        background-color: rgba(255, 255, 255, 0.907);
+        transition: 0.4s;
+        border-radius: 10px;
+      }
+      }
+
+  }
+
+  @media (max-width: 767px){
+    .container{
+      padding-top: 4rem;
+      padding-bottom: 32px;
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: center;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    #profile-asso-header{
+      display: none;
+    }
+
+    .nav-full-size{
+      display: none
+    }
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
@@ -284,7 +376,7 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    z-index: -1; /* Assurez-vous que la div est en arrière-plan */
+    z-index: -1; 
   }
 
   .mobile-nav {.profile-asso{
