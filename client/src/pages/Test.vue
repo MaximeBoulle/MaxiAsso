@@ -10,9 +10,6 @@ import { useRoute } from 'vue-router';
 
   <main>
         <h2>TEST</h2>
-
-
-
   </main>
 
 </template>
