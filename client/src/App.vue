@@ -52,7 +52,11 @@ window.onload = function () {
     <RouterLink to="/test">Contact</RouterLink>
   </nav>
 
-  <RouterView />
+  <RouterView/>
+
+  <footer>
+    oui
+  </footer>
 
 </template>
 
@@ -74,6 +78,22 @@ header {
   background-color: rgb(255, 235, 235);
 }
 
+
+
+
+
+.unused-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    overflow-y: auto;
+    transition: 0.5s;
+
+  }
 
 
 .hamburger {
@@ -295,6 +315,20 @@ header {
     }
   }
 
+  .unused-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -341,6 +375,22 @@ header {
   .violet {
     color: #AD00FF;
   }
+
+  .unused-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.891);
+    z-index: -1;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+
+  }
+
 }
 
 
@@ -348,9 +398,6 @@ header {
 
 
 @media (prefers-color-scheme: dark) {
-  /* Styles pour le mode sombre */
-
-
   template {
     background-color: black;
   }
@@ -382,8 +429,11 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.891);
     z-index: -1;
+    overflow-y: auto;
+    transition: 0.5s;
+
   }
 
   .mobile-nav {

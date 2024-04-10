@@ -8,38 +8,43 @@
         <div id="title-inscription">Inscription</div>
         <div class="inscription-form">
           <div class="categorie-title">
-            NOM DE L'ASSOCIATION
+            NOM DE L'ASSOCIATION <span style="color: red;">*</span>
           </div>
           <form class="form-inscription">
-            <input type="text" id="name" name="name"><br>
+            <input placeholder="Entrer le nom de l'association" type="text" id="name" name="name" required><br>
           </form>
 
           <div class="categorie-title">
-            MAIL
+            MAIL <span style="color: red;">*</span>
           </div>
           <form class="form-inscription">
-            <input type="text" id="mail" name="mail"><br>
+            <input placeholder="Entrer votre Email" type="text" id="mail" name="mail" required><br>
           </form>
 
           <div class="categorie-title">
-            MOT DE PASSE
+            MOT DE PASSE <span style="color: red;">*</span>
           </div>
           <form class="form-inscription">
-            <input type="text" id="password" name="password"><br>
+            <input placeholder="Entrer votre mot de passe" type="text" id="password" name="password" required><br>
           </form>
 
           <div class="categorie-title">
-            CONFIRMER LE MOT DE PASSE
+            CONFIRMER LE MOT DE PASSE <span style="color: red;">*</span>
           </div>
           <form class="form-inscription">
-            <input type="text" id="password" name="password"><br>
+            <input placeholder="Confirmer votre mot de passe" type="text" id="password" name="password" required><br>
           </form>
 
           <button id="mon-bouton">S'inscrire </button>
         </div>
+
+
       </div>
     </main>
+
+  
   </div>
+
 </template>
 
 <style scoped>
@@ -58,8 +63,8 @@
 
   #title-inscription{
     margin: 0 auto;
-    margin-top: 50px;
-    font-size: 2.5rem;
+    margin-top: 3rem;
+    font-size: 1.5rem;
     color: white;
     border-radius: 45px;
     border-width: 1.5px;
@@ -96,6 +101,7 @@
 
   .form-inscription{
     input{
+      background-color: white;
       padding: 1rem;
       border-radius: 14px;
       border-width: 1.5px;
@@ -116,6 +122,18 @@
     width: 80%;
     margin-left: 10%;
   }
+  button:hover{
+    margin-top: 2rem;
+    border-radius: 15px;
+    border-width: 1.5px;
+    border-style:solid;
+    transition: 0.2s;
+    background-color: orange;
+    color: aliceblue;
+    padding: 0.5rem;
+    width: 80%;
+    margin-left: 10%;
+  }
 
 
 
@@ -124,8 +142,8 @@
 
   #title-inscription{
     margin: 0 auto;
-    margin-top: 50px;
-    font-size: 2.5rem;
+    margin-top: 3rem;
+    font-size: 1.5rem;
     color: white;
     border-radius: 45px;
     border-width: 1.5px;
@@ -172,9 +190,38 @@
       border-style: solid;
       width: 90%;
     }
+  }
 
+  .categorie-title{
+    font-size:small;
+    font-weight: 550;
+    color: white;
+    padding-top: 1rem;
+    margin-left: -0.3rem;
+    height: 2rem;
+    margin-top: 1rem;
+  }
 
+  .form-inscription{
+    input{
+      background-color: rgba(0, 0, 0, 0.118);
+      padding: 1rem;
+      border-radius: 14px;
+      border-width: 1.5px;
+      border-color: white;
+      border-style: solid;
+      width: 90%;
+    }
   }
 }
+
+@media (min-width: 768px) {
+  main{
+    display: flex;
+    justify-content: center;
+    width: 40rem;
+  }
+}
+
 
 </style>
