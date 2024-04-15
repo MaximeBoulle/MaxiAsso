@@ -4,20 +4,50 @@
 
     export const connected = ref(false);
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('my-button').addEventListener('click', function() {
-        var mail = document.getElementById('mail').value;
-        var password = document.getElementById('password').value;
+export default {
+    data() {
+    return {
+      wrong: ''
+    };
+  },
+  methods: {
+    attemptLogin() {
+      const mail = document.getElementById('mail').value;
+      const password = document.getElementById('password').value;
 
-        if (mail === 'maxi@gmail.com' && password === 'asso') {
-            console.log('Connexion success !');
-            connected.value = true; // Mettre à jour la valeur de connected
-            console.log(connected.value);
-        } else {
-            console.log('Mail or password incorrect');
-        }
+      if (mail === 'maxi@gmail.com' && password === 'asso') {
+        console.log('Connexion réussie !');
+        this.$emit('toggle-connected', true);
+      } else {
+        this.wrong = 'Mail ou mot de passe incorrect';
+      }
+    }
+  },
+  mounted() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const myButton = document.getElementById('my-button');
+      
+      if (myButton) {
+        myButton.addEventListener('click', this.attemptLogin);
+        myButton.addEventListener('click', () => {
+          const mail = document.getElementById('mail').value;
+          const password = document.getElementById('password').value;
+
+          if (mail === 'maxi@gmail.com' && password === 'asso') {
+            console.log('Connexion réussie !');
+            connected.value = true
+            // Mettre à jour la valeur de connected
+            this.$emit('toggle-connected', true);
+          } else {
+            console.log('Mail ou mot de passe incorrect');
+          }
+        });
+      } else {
+        console.error("Le bouton de connexion n'a pas été trouvé.");
+      }
     });
-});
+  }
+}
 
 </script>
 
@@ -38,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <form class="form-inscription">
             <input placeholder="Entrer votre mot de passe" type="password" id="password" name="password" required><br>
           </form>
+          <div class="wrong-mail-or-password">{{ wrong }}</div>
           <button  @click="toggleConnected" class="btn btn-white btn-animate" id="my-button">Se connecter</button>
         </div>
       </div>
@@ -52,6 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
     justify-content: center;
   }
   
+  .wrong-mail-or-password{
+    padding-top: 2vh;
+    padding-left: 2vh;
+    color: red;    
+    font-size: 0.9rem;
+  }
 
 .unused-background {
     position: relative;

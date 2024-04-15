@@ -1,13 +1,35 @@
-<script>
+<script setup>
   document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('form-inscription').addEventListener('submit', function(event) {
-      event.preventDefault(); 
+      document.getElementById('form-inscription').addEventListener('submit', function(event) {
+        event.preventDefault(); 
 
-      var name = document.getElementById('name').value;
-      var mail = document.getElementById('mail').value;
-      var password = document.getElementById('password').value;
-    });
-});
+        var name = document.getElementById('name').value;
+        var mail = document.getElementById('mail').value;
+        var password = document.getElementById('password').value;
+        var confirm_password = document.getElementById('confirm_password').value;
+
+        console.log("Name : ", name);
+        console.log("Mail : ", mail);
+        console.log("Password : ", password);
+      });
+
+      // check if the password is twice the same
+      function validatePassword() {
+      if (password.value != confirm_password.value) {
+        console.log("Don't match");
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        console.log("Match");
+        confirm_password.setCustomValidity('');
+      }
+    }
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;  
+  });
+
+  
+
+
 </script>
 
 <template>
@@ -15,7 +37,7 @@
     <main>
       <div class="main-part">
         <div class="inscription-form">
-          <form class="form-inscription">
+          <form class="form-inscription" id="form-inscription">
             <div class="categorie-title">
               NOM DE L'ASSOCIATION <span style="color: red;">*</span>
             </div>
@@ -26,12 +48,16 @@
             <input placeholder="Entrer votre Email" type="text" id="mail" name="mail" required><br>
             <div class="categorie-title">
               MOT DE PASSE <span style="color: red;">*</span>
+              <div id="more-information">
+              Doit contenir au moins 8 caractères dont une minuscule, une majuscule et un chiffre 
             </div>
-            <input placeholder="Entrer votre mot de passe" type="password" id="password" name="password" required><br>
+            </div>
+            
+            <input placeholder="Entrer votre mot de passe" type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br>
             <div class="categorie-title">
               CONFIRMER LE MOT DE PASSE <span style="color: red;">*</span>
             </div>
-            <input placeholder="Confirmer votre mot de passe" type="password" id="password" name="password" required><br>
+            <input placeholder="Confirmer votre mot de passe" type="password" id="confirm_password" name="password" required><br>
             <button type="submit" class="btn btn-white btn-animate" id="mon-bouton">S'inscrire </button>
           </form>
         </div>
@@ -39,14 +65,20 @@
     </main>
   </div>
 </template>
+
+
 <style scoped>
-
-
-
   main{
     margin-top: 5vh;
     display: flex;
     justify-content: center;
+  }
+
+  #more-information{
+    color: #736D6D;
+    font-size: 0.75rem;
+    text-decoration: none;
+    font-weight: normal;
   }
 
 .unused-background {

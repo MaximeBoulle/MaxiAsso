@@ -7,7 +7,6 @@
   import { connected } from '@/components/SignInForm.vue';
 
 
-  console.log("au début", connected);
   const nameAsso = ref(connected.valueOf ? 'Connexion' : 'Asso Maxi');
 
 
