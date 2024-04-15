@@ -1,13 +1,24 @@
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('form-inscription').addEventListener('submit', function(event) {
-      event.preventDefault(); 
+    import TheHeader from '@/components/TheHeader.vue';
+    import { computed, ref, watch } from 'vue';
 
-      var name = document.getElementById('name').value;
-      var mail = document.getElementById('mail').value;
-      var password = document.getElementById('password').value;
+    export const connected = ref(false);
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('my-button').addEventListener('click', function() {
+        var mail = document.getElementById('mail').value;
+        var password = document.getElementById('password').value;
+
+        if (mail === 'maxi@gmail.com' && password === 'asso') {
+            console.log('Connexion success !');
+            connected.value = true; // Mettre à jour la valeur de connected
+            console.log(connected.value);
+        } else {
+            console.log('Mail or password incorrect');
+        }
     });
 });
+
 </script>
 
 <template>
@@ -15,49 +26,47 @@
     <main>
       <div class="main-part">
         <div class="inscription-form">
+          <div class="categorie-title">
+            MAIL <span style="color: red;">*</span>
+          </div>
           <form class="form-inscription">
-            <div class="categorie-title">
-              NOM DE L'ASSOCIATION <span style="color: red;">*</span>
-            </div>
-            <input placeholder="Entrer le nom de l'association" type="text" id="name" name="name" required><br>
-            <div class="categorie-title">
-              MAIL <span style="color: red;">*</span>
-            </div>
             <input placeholder="Entrer votre Email" type="text" id="mail" name="mail" required><br>
-            <div class="categorie-title">
-              MOT DE PASSE <span style="color: red;">*</span>
-            </div>
-            <input placeholder="Entrer votre mot de passe" type="password" id="password" name="password" required><br>
-            <div class="categorie-title">
-              CONFIRMER LE MOT DE PASSE <span style="color: red;">*</span>
-            </div>
-            <input placeholder="Confirmer votre mot de passe" type="password" id="password" name="password" required><br>
-            <button type="submit" class="btn btn-white btn-animate" id="mon-bouton">S'inscrire </button>
           </form>
+          <div class="categorie-title">
+            MOT DE PASSE <span style="color: red;">*</span>
+          </div>
+          <form class="form-inscription">
+            <input placeholder="Entrer votre mot de passe" type="password" id="password" name="password" required><br>
+          </form>
+          <button  @click="toggleConnected" class="btn btn-white btn-animate" id="my-button">Se connecter</button>
         </div>
       </div>
     </main>
   </div>
 </template>
+
 <style scoped>
-
-
-
   main{
     margin-top: 5vh;
     display: flex;
     justify-content: center;
   }
+  
 
 .unused-background {
     position: relative;
   }
+
+
   .main-part{
     display: flex;
     width: 90%;
     justify-content: center;
     flex-direction: column;
   }
+
+  
+
   
   .inscription-form{
     padding: 2.5rem;
@@ -107,14 +116,16 @@
     border-width: 1.5px;
     border-style:solid;
     transition: 0.2s;
-    background-color: rgba(20, 250, 154, 0.61);
+    background-color: rgba(6, 247, 146, 0.61);
     padding: 0.5rem;
     width: 80%;
     margin-left: 10%;
   }
 
 
-  .btn:link,
+
+
+.btn:link,
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
@@ -167,13 +178,12 @@
 
 
 
-
-
-
   @media (prefers-color-scheme: dark) {
-    button{
-      color: white
-    }
+    
+
+  
+
+
   .unused-background {
     position: relative;
   }
@@ -208,7 +218,6 @@
       border-color: white;
       border-style: solid;
       width: 90%;
-      color: white;
     }
   }
 
@@ -267,6 +276,9 @@
     display: flex;
     justify-content: center;
     transition: 0.5s;
+  }
+  button{
+    color: white;
   }
   }
 }

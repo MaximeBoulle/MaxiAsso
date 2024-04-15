@@ -1,27 +1,37 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
-    import TheFooter from '@/components/TheFooter.vue';
-    import TheHeader from '@/components/TheHeader.vue';
-    import { computed, ref } from 'vue';
+  import { RouterLink, RouterView } from 'vue-router';
+  import TheFooter from '@/components/TheFooter.vue';
+  import TheHeader from '@/components/TheHeader.vue';
+  import SignInForm from '@/components/SignInForm.vue';
+  import { computed, ref, watch } from 'vue';
+  import { connected } from '@/components/SignInForm.vue';
+
+
+  console.log("au début", connected);
+  const nameAsso = ref(connected.valueOf ? 'Connexion' : 'Asso Maxi');
 
 
     window.onload = function () {
     const menu_btn = document.querySelector('.hamburger');
     const mobile_menu = document.querySelector('.mobile-nav');
-
     if (mobile_menu.classList.contains('is-active')) {
         menu_btn.classList.add('is-active');
     } else {
         menu_btn.classList.remove('is-active');
     }
-
     menu_btn.addEventListener('click', function () {
         menu_btn.classList.toggle('is-active');
-
         mobile_menu.classList.toggle('is-active');
     }
     )
-    }
+    };
+
+// Mettre à jour nameAsso chaque fois que connected.value change
+watch(connected, (newValue) => {
+  console.log("Ca bouge !")
+  nameAsso.value = newValue ? 'Asso Maxi' : 'Connected';
+});
+
 </script>
 
 <template>
@@ -40,14 +50,14 @@ import { RouterLink, RouterView } from 'vue-router';
         <RouterLink to="/test">Contact</RouterLink>
       </div>
       <router-link to="/SignInPage" class="profile-asso" id="profile-asso-header">
-        <div id="nom-asso">Connexion</div>
+        <div id="nom-asso"> {{ nameAsso }}</div>
         <img id="profil-logo" src="../assets/2815428.png" alt="profil-logo">
       </router-link>
     </div>
   </header>
   <nav class="mobile-nav">
     <router-link to="/SignInPage" class="profile-asso">
-      <div id="nom-asso">Connexion</div>
+      <div id="nom-asso"> {{ nameAsso }}</div>
       <img id="profil-logo" src="../assets/2815428.png" alt="profil-logo">
     </router-link>
     <RouterLink to="/">Home</RouterLink>
@@ -214,6 +224,8 @@ header {
 
   #nom-asso {
     padding-top: 0.6rem;
+    white-space: nowrap; 
+
   }
 }
 
@@ -312,6 +324,8 @@ header {
   #nom-asso {
     padding-top: 0.8rem;
     margin-left: 1rem;
+    white-space: nowrap; 
+
   }
 
   .nav-full-size {
@@ -361,6 +375,8 @@ header {
 
   #profile-asso-header {
     display: none;
+    white-space: nowrap; 
+
   }
 
   .nav-full-size {

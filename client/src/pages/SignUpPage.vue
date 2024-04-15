@@ -1,11 +1,11 @@
 <script>
-  import SignInForm from "@/components/SignInForm.vue";
+  import SignUpForm from "@/components/SignUpForm.vue";
   import SignUpInSwitch from "../components/SignUpInSwitch.vue";
 
   export default {
     components: {
       SignUpInSwitch,
-      SignInForm
+      SignUpForm
     },
   }
 </script>
@@ -14,7 +14,7 @@
 <template>
   <main>
     <SignUpInSwitch/>
-    <SignInForm/>
+    <SignUpForm/>
   </main>
 </template>
 
