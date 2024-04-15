@@ -45,7 +45,7 @@
             <div class="categorie-title">
               MAIL <span style="color: red;">*</span>
             </div>
-            <input placeholder="Entrer votre Email" type="text" id="mail" name="mail" required><br>
+            <input placeholder="Entrer votre Email" type="email" id="mail" name="mail" required><br>
             <div class="categorie-title">
               MOT DE PASSE <span style="color: red;">*</span>
               <div id="more-information">
@@ -75,6 +75,7 @@
   }
 
   #more-information{
+    height: fit-content;
     color: #736D6D;
     font-size: 0.75rem;
     text-decoration: none;
@@ -101,12 +102,13 @@
   }
 
   .categorie-title{
+    height: auto;
+    min-height: 2rem;
     font-size:small;
     font-weight: 550;
     color: rgb(53, 53, 53);
     padding-top: 1rem;
     margin-left: -0.3rem;
-    height: 2rem;
     margin-top: 1rem;
   }
 
@@ -222,12 +224,13 @@
   
 
   .categorie-title{
+    min-height: 2rem;
+    height: auto;
     font-size:small;
     font-weight: 550;
     color: rgb(53, 53, 53);
     padding-top: 1rem;
     margin-left: -0.3rem;
-    height: 2rem;
     margin-top: 1rem;
   }
 
@@ -245,12 +248,13 @@
   }
 
   .categorie-title{
+    height: auto;
+    min-height: 2rem;
     font-size:small;
     font-weight: 550;
     color: white;
     padding-top: 1rem;
     margin-left: -0.3rem;
-    height: 2rem;
     margin-top: 1rem;
   }
 

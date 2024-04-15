@@ -56,11 +56,14 @@ export default {
     <main>
       <div class="main-part">
         <div class="inscription-form">
+            <div class="title-form">
+                Connexion 
+            </div>
           <div class="categorie-title">
             MAIL <span style="color: red;">*</span>
           </div>
           <form class="form-inscription">
-            <input placeholder="Entrer votre Email" type="text" id="mail" name="mail" required><br>
+            <input placeholder="Entrer votre Email" type="mail" id="mail" name="mail" required><br>
           </form>
           <div class="categorie-title">
             MOT DE PASSE <span style="color: red;">*</span>
@@ -81,6 +84,12 @@ export default {
     margin-top: 5vh;
     display: flex;
     justify-content: center;
+  }
+
+  .title-form{
+    padding: 2rem;
+    color: orange;
+    font-size: 2rem;
   }
   
   .wrong-mail-or-password{
@@ -248,6 +257,7 @@ export default {
 
   .form-inscription{
     input{
+        color: white;
       background-color: #736D6D;
       padding: 1rem;
       border-radius: 14px;
