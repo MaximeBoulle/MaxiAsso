@@ -4,7 +4,7 @@ import {ref} from 'vue';
 import {id_event} from '../globalState';
 
 let event_create = ref(
-  {id_event:"", title:"", image:"https://cdn.icon-icons.com/icons2/903/PNG/512/plus_icon-icons.com_69476.png", description:"", event_block:{title_block:""}}
+  {id_event:"", title:"", image:"https://cdn.icon-icons.com/icons2/903/PNG/512/plus_icon-icons.com_69476.png", description:"", event_block:[{id:1,title_block:""},{id:2,title_block:""},{id:3,title_block:""}]}
   )
 
   async function submit()
@@ -27,11 +27,15 @@ function show_form()
 {
   let dropdown = document.getElementById("Name_event_description_form");
   let hide_title = document.getElementById("Title_form_name");
-  console.log(hide_title.display)
+  let hide_color = document.getElementById("form_name");
+
   
   //condition pour tester si le menu est déjà montrer ou non si "flex" alors on met none (pour le faire disparaitre) sinon on met flex
   dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
   hide_title.display = (hide_title.display ==="flex") ? "none" : "flex";
+  hide_color.style.background = (hide_color.style.background === "rgb(134, 133, 133)") ? "none" : "rgb(134, 133, 133)";
+  
+
  
 
 }
@@ -51,7 +55,7 @@ let fieldset_form = ref([
   
     </section>
 
-    <section class="form_name">
+    <section class="form_name" id="form_name">
         <button @click= "show_form" class="bloc-top">
             <span id="Title_form_name">Nom de l'événement</span>
             <img class="bouton_add" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png">
@@ -65,6 +69,148 @@ let fieldset_form = ref([
       </section>
 
       <section class="propierties_event">
+      <section class="Name_event">
+        <form methode="post" action="#" id="Name_fiedlset" @submit.prevent>
+          
+          <input v-model="event_create.event_block.title_block" placeholder="Ajouter un titre">
+
+
+        </form>
+      </section>
+      
+      <form class="event_form" >
+
+        <fieldset id="box1">
+
+          <section class="checbox_colonne">
+              
+            <section>
+              <input type="checkbox" id="Texte" >
+              <label for="Texte">Texte</label>
+              
+            </section>
+
+            <section>
+              <input type="checkbox" id="Choix unique" >
+              <label for="Choix unique">Choix unique</label>
+            </section>
+              
+            <section>
+              <input type="checkbox" id="Choix multiple" >
+              <label for="Choix unique">Choix multiple</label>
+              
+            </section>
+                            
+          </section>
+          
+          <section class="checbox_colonne">
+
+            <section>
+              <input type="checkbox" id="Paragraphe" >
+              <label for="Paragraphe">Paragraphe</label>
+            </section>
+            
+            <section>
+              <input type="checkbox" id="Date" >
+              <label for="Date">Date</label>
+            </section>
+            
+            <section>
+              <input type="checkbox" id="Heure" >
+              <label for="Heure">Heure</label>
+            </section>
+              
+            
+          </section>
+          
+          <section class="checbox_colonne">
+            <input type="checkbox" id="Obligatoire" >
+            <label for="Obligatoire">Obligatoire</label>
+          </section>
+
+          
+          
+        </fieldset>
+
+      </form>
+
+      
+      
+    </section>
+
+    <section class="propierties_event">
+      <section class="Name_event">
+        <form methode="post" action="#" id="Name_fiedlset" @submit.prevent>
+          
+          <input  v-model="event_create.event_block.title_block" placeholder="Ajouter un titre">
+
+
+        </form>
+      </section>
+      
+      <form class="event_form" >
+
+        <fieldset id="box1">
+
+          <section class="checbox_colonne">
+              
+            <section>
+              <input type="checkbox" id="Texte" >
+              <label for="Texte">Texte</label>
+              
+            </section>
+
+            <section>
+              <input type="checkbox" id="Choix unique" >
+              <label for="Choix unique">Choix unique</label>
+            </section>
+              
+            <section>
+              <input type="checkbox" id="Choix multiple" >
+              <label for="Choix unique">Choix multiple</label>
+              
+            </section>
+                            
+          </section>
+          
+          <section class="checbox_colonne">
+
+            <section>
+              <input type="checkbox" id="Paragraphe" >
+              <label for="Paragraphe">Paragraphe</label>
+            </section>
+            
+            <section>
+              <input type="checkbox" id="Date" >
+              <label for="Date">Date</label>
+            </section>
+            
+            <section>
+              <input type="checkbox" id="Heure" >
+              <label for="Heure">Heure</label>
+            </section>
+              
+            
+          </section>
+          
+          <section class="checbox_colonne">
+            <input type="checkbox" id="Obligatoire" >
+            <label for="Obligatoire">Obligatoire</label>
+          </section>
+
+          
+          
+        </fieldset>
+
+
+
+      </form>
+
+      
+      
+    </section>
+
+    <section class="propierties_event">
       <section class="Name_event">
         <form methode="post" action="#" id="Name_fiedlset" @submit.prevent>
           
@@ -130,63 +276,11 @@ let fieldset_form = ref([
 
       </form>
 
-      <form class="event_form" >
-
-<fieldset id="box1">
-
-  <section class="checbox_colonne">
       
-    <section>
-      <input type="checkbox" id="Texte" >
-      <label for="Texte">Texte</label>
       
     </section>
 
-    <section>
-      <input type="checkbox" id="Choix unique" >
-      <label for="Choix unique">Choix unique</label>
-    </section>
-      
-    <section>
-      <input type="checkbox" id="Choix multiple" >
-      <label for="Choix unique">Choix multiple</label>
-      
-    </section>
-                    
-  </section>
-  
-  <section class="checbox_colonne">
-
-    <section>
-      <input type="checkbox" id="Paragraphe" >
-      <label for="Paragraphe">Paragraphe</label>
-    </section>
     
-    <section>
-      <input type="checkbox" id="Date" >
-      <label for="Date">Date</label>
-    </section>
-    
-    <section>
-      <input type="checkbox" id="Heure" >
-      <label for="Heure">Heure</label>
-    </section>
-      
-    
-  </section>
-  
-  <section class="checbox_colonne">
-    <input type="checkbox" id="Obligatoire" >
-    <label for="Obligatoire">Obligatoire</label>
-  </section>
-
-  
-  
-</fieldset>
-
-      </form>
-      
-    </section>
     </form>
 
     <section id="add-button">
@@ -265,7 +359,7 @@ main
   margin-top: 1%;
 }
 
-.form_name
+#form_name
 {
   display: flex;
   flex-direction: column;
@@ -273,7 +367,7 @@ main
   justify-content: center;
   height: 100%;
   width:100%;
-  background: #868585;
+  background: none;
   margin-bottom: 5%;
   margin-top: -15%;
   z-index: 1;
@@ -409,7 +503,7 @@ main
   margin: 0;
   width: 100%;
   background-color: rgb(255, 255, 255,1);
-  padding-top: 10%;
+  padding-top: 5%;
   height: 75%;
 }
 
@@ -447,7 +541,7 @@ main
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 10%;
 }
 
 
@@ -456,14 +550,16 @@ main
     display: flex;
     border-radius: 25px;
     border: none;
-    width: 10%;
+    width: 11%;
     justify-content: center;
     align-items: center;
+    height: 84%;
+    background-color: #D5B613;
 }
 
 .add_button_image {
-    width: 100%;
-    height: 30%;
+    width: 164%;
+    height: 115%;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png");
     background-size: cover;
     background-position: center;
