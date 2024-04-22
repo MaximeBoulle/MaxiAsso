@@ -4,7 +4,7 @@ import {ref} from 'vue';
 import {id_event} from '../globalState';
 
 let event_create = ref(
-  {id_event:"", title:"", image:"https://cdn.icon-icons.com/icons2/903/PNG/512/plus_icon-icons.com_69476.png", description:""}
+  {id_event:"", title:"", image:"https://cdn.icon-icons.com/icons2/903/PNG/512/plus_icon-icons.com_69476.png", description:"", event_block:{title_block:""}}
   )
 
   async function submit()
@@ -31,7 +31,7 @@ function show_form()
   
   //condition pour tester si le menu est déjà montrer ou non si "flex" alors on met none (pour le faire disparaitre) sinon on met flex
   dropdown.style.display = (dropdown.style.display === "flex") ? "none" : "flex";
-  hide_title.display = (hide_title.display ==="block") ? "none" : "block";
+  hide_title.display = (hide_title.display ==="flex") ? "none" : "flex";
  
 
 }
@@ -44,8 +44,9 @@ let fieldset_form = ref([
 <template>
   
   <main>
-
-    <section class="image">
+    
+    <form @submit.prevent class="form_page">
+      <section class="image">
       <img :src="event_create.image" alt="image couldn't load" class="image_event" >
   
     </section>
@@ -63,19 +64,17 @@ let fieldset_form = ref([
         </form>
       </section>
 
-    
-
-    <section class="propierties_event">
+      <section class="propierties_event">
       <section class="Name_event">
         <form methode="post" action="#" id="Name_fiedlset" @submit.prevent>
           
-          <input  v-model="event_create.title" placeholder="Ajouter un titre">
+          <input  v-model="event_create.event_block.title_block" placeholder="Ajouter un titre">
 
 
         </form>
       </section>
       
-      <form class="event_form">
+      <form class="event_form" >
 
         <fieldset id="box1">
 
@@ -130,7 +129,87 @@ let fieldset_form = ref([
         </fieldset>
 
       </form>
+
+      <form class="event_form" >
+
+<fieldset id="box1">
+
+  <section class="checbox_colonne">
+      
+    <section>
+      <input type="checkbox" id="Texte" >
+      <label for="Texte">Texte</label>
+      
     </section>
+
+    <section>
+      <input type="checkbox" id="Choix unique" >
+      <label for="Choix unique">Choix unique</label>
+    </section>
+      
+    <section>
+      <input type="checkbox" id="Choix multiple" >
+      <label for="Choix unique">Choix multiple</label>
+      
+    </section>
+                    
+  </section>
+  
+  <section class="checbox_colonne">
+
+    <section>
+      <input type="checkbox" id="Paragraphe" >
+      <label for="Paragraphe">Paragraphe</label>
+    </section>
+    
+    <section>
+      <input type="checkbox" id="Date" >
+      <label for="Date">Date</label>
+    </section>
+    
+    <section>
+      <input type="checkbox" id="Heure" >
+      <label for="Heure">Heure</label>
+    </section>
+      
+    
+  </section>
+  
+  <section class="checbox_colonne">
+    <input type="checkbox" id="Obligatoire" >
+    <label for="Obligatoire">Obligatoire</label>
+  </section>
+
+  
+  
+</fieldset>
+
+      </form>
+      
+    </section>
+    </form>
+
+    <section id="add-button">
+        
+        <button @click="submit" id="add_event">
+
+          <span class="add_button_image"></span> 
+        </button>
+    
+        <p>Ajouter un champ</p>
+      </section>
+    
+
+    
+
+    
+
+    <section id="validate-button">
+
+      <button @click="submit" id="validate_event">Valider</button>
+        
+    </section>
+
 
     
   </main>
@@ -138,6 +217,7 @@ let fieldset_form = ref([
 </template>
 
 <style scoped>
+
 
 main
 {
@@ -148,10 +228,18 @@ main
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 41px;
+  border-radius: 25px;
   background-color: rgb(217, 217, 217,0.26);
   font-family: 'inter', sans-serif;
+  height: 91%;
 
+}
+
+.form_page
+{
+  display: flex;
+  flex-direction: column;
+  height:200%;
 }
 
 .image
@@ -161,46 +249,20 @@ main
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90%;
+  height: 150%;
   width:100%;
-  border-radius: 50px;
+  border-radius: 25px;
   background: rgb(217, 217, 217,1);
   margin-top:2%
 }
 
 .image_event
 {
-  transition: width 2s;
-  height: 90%;
+  height: 100%;
   width: 50%;
   border-radius: 12px;
   margin-bottom: 5%;
   margin-top: 1%;
-}
-
-
-.Name_event_description
-{
-  display:flex;
-  flex-direction: column;
-  height: 100%;
-  width:99%;
-  padding:0%;
-  border:none;
-}
-
-#Name_event_description_form
-{
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width:80%;
-  border-width: 0%;
-  margin-bottom: 5%;
-  margin-top: 5%;
-  text-align:center;
 }
 
 .form_name
@@ -211,31 +273,13 @@ main
   justify-content: center;
   height: 100%;
   width:100%;
-  border-width: 0%;
   background: #868585;
   margin-bottom: 5%;
   margin-top: -15%;
   z-index: 1;
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 50px;
-}
-
-input 
-{
-    margin: 2% 0;
-    padding: 2%;
-    width: 100%;
-    box-sizing: border-box;
-    border: none; /* Retire les bordures des zones de texte */
-    background: none; 
-    color: white;
-    text-align: center;
-}
-
-input::placeholder
-{
-  color: white;
-  font-size: 120%;
+  font-size: 1rem;
 }
 
 .bloc-top {
@@ -253,47 +297,106 @@ input::placeholder
     border-radius:  5px;
 }
 
+#Title_form_name
+{
+  display: flex;
+}
 
 .bloc-top img {
     width: 14%
 }
 
-#Title_form_name
+#Name_event_description_form
 {
-  display: block;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120%;
+  width:80%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  text-align:center;
+}
+
+
+.Name_event_description
+{
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+  width:99%;
+  padding:0%;
+  border:none;
+}
+
+.Name_event_description input 
+{
+    margin: 2% 0;
+    padding: 2%;
+    width: 100%;
+    box-sizing: border-box;
+    border: none; /* Retire les bordures des zones de texte */
+    background: none; 
+    color: white;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+
+
+.Name_event_description input::placeholder
+{
+  color: white;
+  font-size: 100%;
+}
+
+.propierties_event
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 135%;
+}
+
+.Name_event
+{
+  display: flex;
+
 }
 
 #Name_fiedlset
 {
-  width: 50%;
+  width: 100%;
   color: black;
 }
 
 #Name_fiedlset input
 {
   color: black;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: 500;
   text-align: left;
+  margin: 2% 0;
+  padding: 2%;
+  width: 100%;
+  box-sizing: border-box;
+  border: none; /* Retire les bordures des zones de texte */
+  background: none; 
 }
 
 #Name_fiedlset ::placeholder
 {
   color: black;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 1.5rem;
   text-align: left;
   height : 5vh
 }
 
-.propierties_event
-{
-  width: 100%;
-}
 
 .event_form
 {
-  font-size: 0.84rem;;
+  font-size: 1rem;;
   height: 100%;
 }
 
@@ -307,15 +410,23 @@ input::placeholder
   width: 100%;
   background-color: rgb(255, 255, 255,1);
   padding-top: 10%;
+  height: 75%;
 }
 
 .checbox_colonne
 {
   flex: 1;
-  max-width: 50%;
-  margin-right: 2.5%;
-  margin-left: 2.5%
+  padding-right: 0.9rem ;
 }
+
+.checbox_colonne section
+{
+  display: inline-flex;
+  width: 116%;
+  align-items: center;
+}
+
+
 
 
 .checbox_colonne input
@@ -324,16 +435,46 @@ input::placeholder
   margin-right: 2%;
 }
 
-.checbox_colonne section
-{
-  display: inline-flex;
-  width: 279%;
-  align-items: center;
-}
+
 
 .checbox_colonne label
 {
   width: 300%;
 }
+
+#add-button
+{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+#add_event
+{
+    display: flex;
+    border-radius: 25px;
+    border: none;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_button_image {
+    width: 100%;
+    height: 30%;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png");
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+#add-button p
+{
+  display: flex;
+}
+
 
 </style>

@@ -14,7 +14,7 @@ import { computed, ref } from "vue";
 
       <nav> 
         <RouterLink to="/">HomePage</RouterLink>
-        <RouterLink to="/event/add">AddBookPages</RouterLink>
+        <RouterLink to="/event/add">AddEventPages</RouterLink>
         
       </nav>
 
@@ -27,5 +27,4 @@ import { computed, ref } from "vue";
 </template>
 
 <style scoped>
-
 </style>
